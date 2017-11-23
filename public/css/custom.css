@@ -1,0 +1,119 @@
+nav {
+	margin-bottom: 10px;
+}
+
+.card-img-top {
+	width: auto !important;
+	margin-top: 10px;
+}
+
+.card-deck .card {
+	margin-bottom: 15px;
+}
+
+.dropdown-item {
+	padding: .25rem 1rem !important;
+}
+
+table.dataTable {
+	border-collapse: collapse !important;
+}
+
+div.dataTables_wrapper div.dataTables_length {
+	float: left;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+	float: right;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+	float: left;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+	float: right;
+}
+
+div.dataTables_wrapper div.dataTables_length,
+div.dataTables_wrapper div.dataTables_filter,
+div.dataTables_wrapper div.dataTables_info,
+div.dataTables_wrapper div.dataTables_paginate {
+	text-align: justify !important;
+}
+
+hr {
+	margin-top: .5rem !important;
+	margin-bottom: .5rem !important;
+}
+
+/* Điều chỉnh */
+body {
+	font-size: .9286rem !important;
+}
+
+legend {
+	font-size: 1rem !important;
+}
+
+.form-control {
+	font-size: .9286rem !important;
+}
+
+.btn {
+	font-size: .9286rem !important;
+}
+
+.dropdown-menu {
+	font-size: .9286rem !important;
+}
+
+.input-group-addon {
+	font-size: .9286rem !important;
+}
+
+.popover-header {
+	font-size: .9286rem !important;
+}
+
+.container {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.jumbotron {
+	padding: 3rem 1rem;
+	margin-bottom: 0rem;
+}
+
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+.cke_chrome {
+	border: 1px solid rgba(0,0,0,.15) !important;
+}
+
+@media (min-width: 576px) {
+	.container {
+		max-width: 576px;
+	}
+}
+
+@media (min-width: 768px) {
+	.container {
+		max-width: 768px;
+	}
+}
+
+@media (min-width: 992px) {
+	.container {
+		max-width: 992px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1140px;
+	}
+}
