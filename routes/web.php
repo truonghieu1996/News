@@ -33,3 +33,7 @@ Route::post('/changepassword', 'ChangePasswordController@postChangepassword');
 Route::get('/users', 'UsersController@getUsers');
 Route::get('/users/delete', 'UsersController@getDelete');
 Route::post('/users/update', 'UsersController@postUpdate');
+
+//Profile
+Route::get('/profile', 'ProfileController@getProfile');
+Route::post('/profile/update', 'ProfileController@postUpdate');

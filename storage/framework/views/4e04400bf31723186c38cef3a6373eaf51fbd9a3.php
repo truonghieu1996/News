@@ -8,7 +8,6 @@
 	<meta name="author" content="Truong Minh Hieu" />
 	<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
 	<title><?php echo e(config('app.name', 'iNews')); ?></title>
-	<link href="<?php echo e(URL::asset('images/agulogo.png')); ?>" type="image/x-icon" rel="shortcut icon" />
 	<link href="<?php echo e(URL::asset('css/app.css')); ?>" type="text/css" rel="stylesheet" />
 	<link href="<?php echo e(URL::asset('css/dataTables.bootstrap4.min.css')); ?>" type="text/css" rel="stylesheet" />
 	<link href="<?php echo e(URL::asset('css/font-awesome.min.css')); ?>" type="text/css" rel="stylesheet" /> <?php echo $__env->yieldContent('css'); ?>
@@ -26,22 +25,39 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="<?php echo e(url('/home')); ?>">Trang chủ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Xem nhiều nhất</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Tin mới nhất</a>
+					</li>
+				</ul>
 				<ul class="navbar-nav ml-auto">
 					<?php if(Auth::guest()): ?>
 					<li class="nav-item">
-						<li class="nav-item"><a class="nav-link" href="<?php echo e(route('login')); ?>">Đăng nhập</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?php echo e(route('register')); ?>">Đăng ký</a></li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo e(route('login')); ?>">Đăng nhập</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo e(route('register')); ?>">Đăng ký</a>
+						</li>
 					</li>
 					<?php else: ?>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#tongquan" id="navbarQuanLy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quản lý</a>
 						<div class="dropdown-menu" aria-labelledby="navbarQuanLy">
 							<?php if(Auth::user()->role == 1): ?>
-							<a class="dropdown-item" href="<?php echo e(url('/categories')); ?>">Quản lý chủ đề</a>
-							<a class="dropdown-item" href="#">Quản lý bài viết</a>
-							<a class="dropdown-item" href="<?php echo e(url('/users')); ?>">Quản lý người dùng</a>
+							<a class="dropdown-item" href="<?php echo e(url('/categories')); ?>">Chủ đề</a>
+							<a class="dropdown-item" href="#">Bài viết</a>
+							<a class="dropdown-item" href="<?php echo e(url('/users')); ?>">Người dùng</a>
 							<?php else: ?> <?php endif; ?>
-							<a class="dropdown-item" href="#">Quản lý bài viết của tôi</a>
+							<a class="dropdown-item" href="#">Bài viết của tôi</a>
+							<a class="dropdown-item" href="<?php echo e(url('/profile')); ?>">Hồ sơ cá nhân</a>
+							<a class="dropdown-item" href="#">Đăng bài viết</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">

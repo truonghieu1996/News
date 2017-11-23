@@ -66,7 +66,7 @@ class CategoriesController extends Controller
     public function postUpdate(Request $request)
     {
         $this->validate($request, [
-			'name_edit' => 'required|max:255|unique:categories,name,' . $request->ID_edit . ',id'
+			'name_edit' => 'required|max:100|unique:categories,name,' . $request->ID_edit . ',id'
 		]);
 		
 		DB::table('categories')->where('id', $request->ID_edit)->update([

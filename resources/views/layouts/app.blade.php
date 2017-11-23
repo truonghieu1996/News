@@ -8,7 +8,6 @@
 	<meta name="author" content="Truong Minh Hieu" />
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<title>{{ config('app.name', 'iNews') }}</title>
-	<link href="{{ URL::asset('images/agulogo.png') }}" type="image/x-icon" rel="shortcut icon" />
 	<link href="{{ URL::asset('css/app.css') }}" type="text/css" rel="stylesheet" />
 	<link href="{{ URL::asset('css/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
 	<link href="{{ URL::asset('css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" /> @yield('css')
@@ -26,22 +25,39 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="{{ url('/home') }}">Trang chủ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Xem nhiều nhất</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Tin mới nhất</a>
+					</li>
+				</ul>
 				<ul class="navbar-nav ml-auto">
 					@if (Auth::guest())
 					<li class="nav-item">
-						<li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Đăng nhập</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Đăng ký</a></li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
+						</li>
 					</li>
 					@else
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#tongquan" id="navbarQuanLy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quản lý</a>
 						<div class="dropdown-menu" aria-labelledby="navbarQuanLy">
 							@if(Auth::user()->role == 1)
-							<a class="dropdown-item" href="{{ url('/categories') }}">Quản lý chủ đề</a>
-							<a class="dropdown-item" href="#">Quản lý bài viết</a>
-							<a class="dropdown-item" href="{{ url('/users') }}">Quản lý người dùng</a>
+							<a class="dropdown-item" href="{{ url('/categories') }}">Chủ đề</a>
+							<a class="dropdown-item" href="#">Bài viết</a>
+							<a class="dropdown-item" href="{{ url('/users') }}">Người dùng</a>
 							@else @endif
-							<a class="dropdown-item" href="#">Quản lý bài viết của tôi</a>
+							<a class="dropdown-item" href="#">Bài viết của tôi</a>
+							<a class="dropdown-item" href="{{ url('/profile') }}">Hồ sơ cá nhân</a>
+							<a class="dropdown-item" href="#">Đăng bài viết</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
