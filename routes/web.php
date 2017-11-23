@@ -19,8 +19,13 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Adminstrator
+//Categories
 Route::get('/categories', 'CategoriesController@index');
 Route::post('/categories/add', 'CategoriesController@postAdd');
 Route::post('/categories/update', 'CategoriesController@postUpdate');
 Route::get('/categories/delete', 'CategoriesController@getDelete');
+
+//Accounts
+Route::get('/changepassword', 'ChangePasswordController@getChangepassword');
+Route::post('/changepassword', 'ChangePasswordController@postChangepassword');
 
