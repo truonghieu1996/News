@@ -39,7 +39,7 @@
 							@if(Auth::user()->role == 1)
 							<a class="dropdown-item" href="{{ url('/categories') }}">Quản lý chủ đề</a>
 							<a class="dropdown-item" href="#">Quản lý bài viết</a>
-							<a class="dropdown-item" href="#">Quản lý người dùng</a>
+							<a class="dropdown-item" href="{{ url('/users') }}">Quản lý người dùng</a>
 							@else @endif
 							<a class="dropdown-item" href="#">Quản lý bài viết của tôi</a>
 						</div>

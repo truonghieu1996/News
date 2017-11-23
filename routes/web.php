@@ -29,3 +29,7 @@ Route::get('/categories/delete', 'CategoriesController@getDelete');
 Route::get('/changepassword', 'ChangePasswordController@getChangepassword');
 Route::post('/changepassword', 'ChangePasswordController@postChangepassword');
 
+//Users
+Route::get('/users', 'UsersController@getUsers');
+Route::get('/users/delete', 'UsersController@getDelete');
+Route::post('/users/update', 'UsersController@postUpdate');

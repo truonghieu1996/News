@@ -63,7 +63,7 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function Postupdate(Request $request)
+    public function postUpdate(Request $request)
     {
         $this->validate($request, [
 			'name_edit' => 'required|max:255|unique:categories,name,' . $request->ID_edit . ',id'

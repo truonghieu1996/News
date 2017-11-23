@@ -23,8 +23,8 @@
 								<tr>
 									<td>{{ $count++ }}</td>
 									<td>{{ $value->name }}</td>
-									<td class="text-center"><a href="#sua" data-toggle="modal" data-target="#myModalEdit" onclick="getUpdate({{ $value->id }}, '{{ $value->name }}'); return false;" class="btn btn-warning btn-sm" style="width:40px;">Sửa</a></td>
-									<td class="text-center"><a href="#xoa" data-toggle="modal" data-target="#myModalDelete" onclick="getDelete({{ $value->id }}); return false;" class="btn btn-danger btn-sm" style="width:40px;">Xóa</a></td>
+									<td class="text-center"><a data-toggle="modal" data-target="#myModalEdit" onclick="getUpdate({{ $value->id }}, '{{ $value->name }}'); return false;" class="btn btn-warning btn-sm" style="width:40px;">Sửa</a></td>
+									<td class="text-center"><a data-toggle="modal" data-target="#myModalDelete" onclick="getDelete({{ $value->id }}); return false;" class="btn btn-danger btn-sm" style="width:40px;">Xóa</a></td>
 								</tr>
 							@endforeach
 						</tbody>
