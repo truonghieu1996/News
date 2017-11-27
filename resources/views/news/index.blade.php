@@ -48,7 +48,7 @@
 									@endif
 								</td>
 								<td class="text-center">
-									<a href="{{ url('/news/detail/' . $value->id) }}" class="btn btn-warning btn-sm" style="width:40px;">Xem</a>
+									<a href="{{ url('/news/detail/' . $value->id .'/'.$value->amount_view.'/'.$value->user_id) }}" class="btn btn-warning btn-sm" style="width:40px;">Xem</a>
 								</td>
 								<td class="text-center">
 									<a data-toggle="modal" data-target="#myModalDelete" onclick="getDelete({{ $value->id }}); return false;" class="btn btn-danger btn-sm"
