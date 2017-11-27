@@ -15,6 +15,7 @@ class HomeController extends Controller
     public function getNews(){
         $news = DB::table('news')
         ->join('users', 'users.id', '=', 'news.user_id')
+        ->where('approved','=',1)
         ->select('news.*', 'users.name')
         ->get();
         return view('home',['news'=>$news]);
@@ -23,6 +24,7 @@ class HomeController extends Controller
     public function getMostNews(){
         $news = DB::table('news')->orderBy('created_at', 'DESC')
         ->join('users', 'users.id', '=', 'news.user_id')
+        ->where('approved','=',1)
         ->select('news.*', 'users.name')
         ->get();
         return view('home',['news'=>$news]);
@@ -31,6 +33,7 @@ class HomeController extends Controller
     public function getMostView(){
         $news = DB::table('news')->orderBy('amount_view','DESC')
         ->join('users', 'users.id', '=', 'news.user_id')
+        ->where('approved','=',1)
         ->select('news.*', 'users.name')
         ->get();
         return view('home',['news'=>$news]);

@@ -34,7 +34,7 @@
 								<div class="col-md-10">
 									<p>
 										<strong>
-											<a href="<?php echo e(url('/news/detail/' . $value->id)); ?>"><?php echo e($value->title); ?></a>
+											<a href="<?php echo e(url('/news/detail/' . $value->id .'/'.$value->amount_view.'/'.$value->user_id)); ?>"><?php echo e($value->title); ?></a>
 											<br/>
 											<span class='small text-muted'>Đăng bởi <?php echo e($value->name); ?>, đăng vào lúc <?php echo e($value->created_at); ?>, có <?php echo e($value->amount_view); ?> lượt xem.</span>
 										</strong>

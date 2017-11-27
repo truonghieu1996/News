@@ -89,7 +89,7 @@ class NewsController extends Controller
     public function getApproved($id, $status)
 	{
 		DB::table('news')->where('id', $id)->update([
-			'Approved' => $status
+			'approved' => $status
 		]);
 		
 		// if($status == 1)
@@ -112,8 +112,14 @@ class NewsController extends Controller
 		//}
 		return redirect('news');
 	}
-	public function getDetail($id){
+	public function getDetail($id, $amount, $user_id){
+		$amount++;
 		$new = DB::table('news')->where('id','=', $id)->first();
-        return view('news/detail',['new'=>$new]);
+		if(Auth::user()->id != $user_id){
+			DB::table('news')->where('id', $id)->update([
+				'amount_view' => $amount
+			]);
+		}
+		return view('news/detail',['new'=>$new]);
 	}
 }

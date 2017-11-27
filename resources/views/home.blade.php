@@ -34,7 +34,7 @@
 								<div class="col-md-10">
 									<p>
 										<strong>
-											<a href="{{ url('/news/detail/' . $value->id) }}">{{ $value->title }}</a>
+											<a href="{{ url('/news/detail/' . $value->id .'/'.$value->amount_view.'/'.$value->user_id) }}">{{ $value->title }}</a>
 											<br/>
 											<span class='small text-muted'>Đăng bởi {{ $value->name }}, đăng vào lúc {{ $value->created_at }}, có {{ $value->amount_view }} lượt xem.</span>
 										</strong>
