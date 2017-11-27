@@ -68,13 +68,12 @@
 			$('#ID_edit').val(id);
 			$('#name_edit').val(name);
 		}
-		
-		@if($errors->has('name'))
-			$('#myModal').modal('show');
-		@endif
-		
-		@if($errors->has('name_edit'))
-			$('#myModalEdit').modal('show');
-		@endif
 	</script>
+	@if($errors->has('name'))
+		$('#myModal').modal('show');
+	@endif
+	
+	@if($errors->has('name_edit'))
+		$('#myModalEdit').modal('show');
+	@endif
 @endsection

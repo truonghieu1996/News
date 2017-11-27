@@ -18,9 +18,9 @@ class CreateNewsTable extends Migration
             $table->integer('category_id');
             $table->integer('user_id');
             $table->string('title');
-            $table->string('summary');
+            $table->text('summary');
             $table->text('content');
-            $table->integer('approved')->default(0);
+            $table->integer('approved');
             $table->integer('amount_view')->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

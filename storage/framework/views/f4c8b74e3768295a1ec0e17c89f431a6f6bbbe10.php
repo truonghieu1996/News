@@ -68,14 +68,13 @@
 			$('#ID_edit').val(id);
 			$('#name_edit').val(name);
 		}
-		
-		<?php if($errors->has('name')): ?>
-			$('#myModal').modal('show');
-		<?php endif; ?>
-		
-		<?php if($errors->has('name_edit')): ?>
-			$('#myModalEdit').modal('show');
-		<?php endif; ?>
 	</script>
+	<?php if($errors->has('name')): ?>
+		$('#myModal').modal('show');
+	<?php endif; ?>
+	
+	<?php if($errors->has('name_edit')): ?>
+		$('#myModalEdit').modal('show');
+	<?php endif; ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

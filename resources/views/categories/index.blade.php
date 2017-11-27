@@ -22,8 +22,8 @@
 							@foreach($categories as $value)
 								<tr>
 									<td>{{ $count++ }}</td>
-									<td>{{ $value->name }}</td>
-									<td class="text-center"><a data-toggle="modal" data-target="#myModalEdit" onclick="getUpdate({{ $value->id }}, '{{ $value->name }}'); return false;" class="btn btn-warning btn-sm" style="width:40px;">Sửa</a></td>
+									<td>{{ $value->name_category }}</td>
+									<td class="text-center"><a data-toggle="modal" data-target="#myModalEdit" onclick="getUpdate({{ $value->id }}, '{{ $value->name_category }}'); return false;" class="btn btn-warning btn-sm" style="width:40px;">Sửa</a></td>
 									<td class="text-center"><a data-toggle="modal" data-target="#myModalDelete" onclick="getDelete({{ $value->id }}); return false;" class="btn btn-danger btn-sm" style="width:40px;">Xóa</a></td>
 								</tr>
 							@endforeach
@@ -45,10 +45,10 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="name">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
-							<input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" name="name" value="{{ old('name') }}" placeholder="" required />
-							@if($errors->has('name'))
-								<div class="invalid-feedback"><strong>{{ $errors->first('name') }}</strong></div>
+							<label for="name_category">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
+							<input type="text" class="form-control{{ $errors->has('name_category') ? ' is-invalid' : '' }}" id="name_category" name="name_category" value="{{ old('name_category') }}" placeholder="" required />
+							@if($errors->has('name_category'))
+								<div class="invalid-feedback"><strong>{{ $errors->first('name_category') }}</strong></div>
 							@endif
 						</div>
 					</div>
@@ -94,10 +94,10 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="name_edit">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
-							<input type="text" class="form-control{{ $errors->has('name_edit') ? ' is-invalid' : '' }}" id="name_edit" name="name_edit" value="{{ old('name_edit') }}" placeholder="" required />
-							@if($errors->has('name_edit'))
-								<div class="invalid-feedback"><strong>{{ $errors->first('name_edit') }}</strong></div>
+							<label for="name_category_edit">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
+							<input type="text" class="form-control{{ $errors->has('name_category_edit') ? ' is-invalid' : '' }}" id="name_category_edit" name="name_category_edit" value="{{ old('name_category_edit') }}" placeholder="" required />
+							@if($errors->has('name_category_edit'))
+								<div class="invalid-feedback"><strong>{{ $errors->first('name_category_edit') }}</strong></div>
 							@endif
 						</div>
 					</div>
@@ -112,21 +112,21 @@
 
 @section('javascript')
 	<script type="text/javascript">
-		function getUpdate(id, name) {
+		function getUpdate(id, name_category) {
 			$('#ID_edit').val(id);
-			$('#name_edit').val(name);
+			$('#name_category_edit').val(name_category);
 		}
 		
 		function getDelete(id) {
 			$('#ID_delete').val(id);
 		}
-		
-		@if($errors->has('name'))
-			$('#myModal').modal('show');
-		@endif
-		
-		@if($errors->has('name_edit'))
-			$('#myModalEdit').modal('show');
-		@endif
 	</script>
+
+	@if($errors->has('name_category'))
+		$('#myModal').modal('show');
+	@endif
+	
+	@if($errors->has('name_category_category_edit'))
+		$('#myModalEdit').modal('show');
+	@endif
 @endsection

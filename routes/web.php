@@ -12,11 +12,11 @@
 */
 Auth::routes();
 //Home page
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@getNews');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@getNews');
+Route::get('/news/most', 'HomeController@getMostNews');
+Route::get('/news/most/amount/view', 'HomeController@getMostView');
 
 //Adminstrator
 //Categories
@@ -37,3 +37,13 @@ Route::post('/users/update', 'UsersController@postUpdate');
 //Profile
 Route::get('/profile', 'ProfileController@getProfile');
 Route::post('/profile/update', 'ProfileController@postUpdate');
+
+//News
+Route::get('/news', 'NewsController@getNews');
+Route::get('/news/mynews', 'NewsController@getMyNews');
+Route::post('/news/add', 'NewsController@postAdd');
+Route::get('/news/delete', 'NewsController@getDelete');
+Route::post('/news/update', 'NewsController@postUpdate');
+Route::get('/news/{id}/approved/{status}', 'NewsController@getApproved');
+Route::get('/news/detail/{id}', 'NewsController@getDetail');
+

@@ -33,11 +33,11 @@ class CategoriesController extends Controller
     public function postAdd(Request $request)
     {
 		 $this->validate($request, [
-             'name' => 'required|string|max:100|unique:categories'
+             'name_category' => 'required|string|max:100|unique:categories'
          ]);
 		
 		DB::table('categories')->insert([
-			'name' => $request->name,
+			'name_category' => $request->name_category,
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now()
 		]);
@@ -66,11 +66,11 @@ class CategoriesController extends Controller
     public function postUpdate(Request $request)
     {
         $this->validate($request, [
-			'name_edit' => 'required|max:100|unique:categories,name,' . $request->ID_edit . ',id'
+			'name_category_edit' => 'required|max:100|unique:categories,name_category,' . $request->ID_edit . ',id'
 		]);
 		
 		DB::table('categories')->where('id', $request->ID_edit)->update([
-			'name' => $request->name_edit
+			'name_category' => $request->name_category_edit
 		]);
 		return redirect('categories');
     }

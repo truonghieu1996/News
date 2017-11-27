@@ -20,8 +20,8 @@
 							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<tr>
 									<td><?php echo e($count++); ?></td>
-									<td><?php echo e($value->name); ?></td>
-									<td class="text-center"><a data-toggle="modal" data-target="#myModalEdit" onclick="getUpdate(<?php echo e($value->id); ?>, '<?php echo e($value->name); ?>'); return false;" class="btn btn-warning btn-sm" style="width:40px;">Sửa</a></td>
+									<td><?php echo e($value->name_category); ?></td>
+									<td class="text-center"><a data-toggle="modal" data-target="#myModalEdit" onclick="getUpdate(<?php echo e($value->id); ?>, '<?php echo e($value->name_category); ?>'); return false;" class="btn btn-warning btn-sm" style="width:40px;">Sửa</a></td>
 									<td class="text-center"><a data-toggle="modal" data-target="#myModalDelete" onclick="getDelete(<?php echo e($value->id); ?>); return false;" class="btn btn-danger btn-sm" style="width:40px;">Xóa</a></td>
 								</tr>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -44,10 +44,10 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="name">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
-							<input type="text" class="form-control<?php echo e($errors->has('name') ? ' is-invalid' : ''); ?>" id="name" name="name" value="<?php echo e(old('name')); ?>" placeholder="" required />
-							<?php if($errors->has('name')): ?>
-								<div class="invalid-feedback"><strong><?php echo e($errors->first('name')); ?></strong></div>
+							<label for="name_category">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
+							<input type="text" class="form-control<?php echo e($errors->has('name_category') ? ' is-invalid' : ''); ?>" id="name_category" name="name_category" value="<?php echo e(old('name_category')); ?>" placeholder="" required />
+							<?php if($errors->has('name_category')): ?>
+								<div class="invalid-feedback"><strong><?php echo e($errors->first('name_category')); ?></strong></div>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -95,10 +95,10 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="name_edit">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
-							<input type="text" class="form-control<?php echo e($errors->has('name_edit') ? ' is-invalid' : ''); ?>" id="name_edit" name="name_edit" value="<?php echo e(old('name_edit')); ?>" placeholder="" required />
-							<?php if($errors->has('name_edit')): ?>
-								<div class="invalid-feedback"><strong><?php echo e($errors->first('name_edit')); ?></strong></div>
+							<label for="name_category_edit">Tên chủ đề <span class="text-danger font-weight-bold">*</span></label>
+							<input type="text" class="form-control<?php echo e($errors->has('name_category_edit') ? ' is-invalid' : ''); ?>" id="name_category_edit" name="name_category_edit" value="<?php echo e(old('name_category_edit')); ?>" placeholder="" required />
+							<?php if($errors->has('name_category_edit')): ?>
+								<div class="invalid-feedback"><strong><?php echo e($errors->first('name_category_edit')); ?></strong></div>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -113,22 +113,22 @@
 
 <?php $__env->startSection('javascript'); ?>
 	<script type="text/javascript">
-		function getUpdate(id, name) {
+		function getUpdate(id, name_category) {
 			$('#ID_edit').val(id);
-			$('#name_edit').val(name);
+			$('#name_category_edit').val(name_category);
 		}
 		
 		function getDelete(id) {
 			$('#ID_delete').val(id);
 		}
-		
-		<?php if($errors->has('name')): ?>
-			$('#myModal').modal('show');
-		<?php endif; ?>
-		
-		<?php if($errors->has('name_edit')): ?>
-			$('#myModalEdit').modal('show');
-		<?php endif; ?>
 	</script>
+
+	<?php if($errors->has('name_category')): ?>
+		$('#myModal').modal('show');
+	<?php endif; ?>
+	
+	<?php if($errors->has('name_category_category_edit')): ?>
+		$('#myModalEdit').modal('show');
+	<?php endif; ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

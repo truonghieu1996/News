@@ -30,10 +30,10 @@
 						<a class="nav-link" href="{{ url('/home') }}">Trang chủ</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Xem nhiều nhất</a>
+						<a class="nav-link" href="{{ url('/news/most/amount/view') }}">Xem nhiều nhất</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Tin mới nhất</a>
+						<a class="nav-link" href="/news/most">Tin mới nhất</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
@@ -52,12 +52,11 @@
 						<div class="dropdown-menu" aria-labelledby="navbarQuanLy">
 							@if(Auth::user()->role == 1)
 							<a class="dropdown-item" href="{{ url('/categories') }}">Chủ đề</a>
-							<a class="dropdown-item" href="#">Bài viết</a>
+							<a class="dropdown-item" href="{{ url('/news') }}">Bài viết</a>
 							<a class="dropdown-item" href="{{ url('/users') }}">Người dùng</a>
 							@else @endif
-							<a class="dropdown-item" href="#">Bài viết của tôi</a>
+							<a class="dropdown-item" href="news/mynews">Bài viết của tôi</a>
 							<a class="dropdown-item" href="{{ url('/profile') }}">Hồ sơ cá nhân</a>
-							<a class="dropdown-item" href="#">Đăng bài viết</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
@@ -85,6 +84,7 @@
 	<script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
 	<script src="{{ URL::asset('js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 	<script src="{{ URL::asset('js/dataTables.bootstrap4.min.js') }}" type="text/javascript"></script>
+	<script src="{{ URL::asset('js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("#DataList").DataTable({
