@@ -63,14 +63,14 @@
 	</div>
 </div>
 
-{{--  <form action="{{ url('/news/delete') }}" method="get">
+<form action="{{ url('/news/delete') }}" method="get">
 	{{ csrf_field() }}
 	<input type="hidden" id="ID_delete" name="ID_delete" value="" />
 	<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabelDelete" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="myModalLabelDelete">Xóa chủ đề</h5>
+					<h5 class="modal-title" id="myModalLabelDelete">Xóa bài viết</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -85,7 +85,7 @@
 			</div>
 		</div>
 	</div>
-</form>  --}}
+</form>
 @endsection @section('javascript')
 <script type="text/javascript">
 	function getDelete(id) {

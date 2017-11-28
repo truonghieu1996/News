@@ -81,7 +81,7 @@ class NewsController extends Controller
 		return redirect('news/mynews')->with("success", "Cập nhật bài viết thành công!");
     }
 
-    public function getDelete(Request $request){
+    public function getDeleteMyNew(Request $request){
         DB::table('news')->where('id', '=', $request->ID_delete)->delete();
 		return redirect('news/mynews');
     }
@@ -121,5 +121,10 @@ class NewsController extends Controller
 			]);
 		}
 		return view('news/detail',['new'=>$new]);
+	}
+
+	public function getDeleteNew(Request $request){
+		DB::table('news')->where('id', '=', $request->ID_delete)->delete();
+		return redirect('news');
 	}
 }

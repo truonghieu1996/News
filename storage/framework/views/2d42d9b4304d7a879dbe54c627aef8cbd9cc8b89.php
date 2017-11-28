@@ -63,7 +63,30 @@
 	</div>
 </div>
 
+<form action="<?php echo e(url('/news/delete')); ?>" method="get">
+	<?php echo e(csrf_field()); ?>
 
+	<input type="hidden" id="ID_delete" name="ID_delete" value="" />
+	<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabelDelete" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="myModalLabelDelete">Xóa bài viết</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p class="font-weight-bold text-danger">Xác nhận xóa? Hành động này không thể phục hồi.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+					<button type="submit" class="btn btn-danger">Thực hiện</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 <?php $__env->stopSection(); ?> <?php $__env->startSection('javascript'); ?>
 <script type="text/javascript">
 	function getDelete(id) {
