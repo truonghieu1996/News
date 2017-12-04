@@ -108,6 +108,14 @@
 			</div>
 		</div>
 	</form>
+
+	@if($errors->has('name_category'))
+		$('#myModal').modal('show');
+	@endif
+	
+	@if($errors->has('name_category_category_edit'))
+		$('#myModalEdit').modal('show');
+	@endif
 @endsection
 
 @section('javascript')
@@ -121,12 +129,4 @@
 			$('#ID_delete').val(id);
 		}
 	</script>
-
-	@if($errors->has('name_category'))
-		$('#myModal').modal('show');
-	@endif
-	
-	@if($errors->has('name_category_category_edit'))
-		$('#myModalEdit').modal('show');
-	@endif
 @endsection

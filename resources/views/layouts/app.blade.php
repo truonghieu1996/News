@@ -77,7 +77,7 @@
 		@yield('content')
 		<hr />
 		<footer class="footer">
-			<p>&copy; {{ @date("Y") }} {{ config('app.name', 'Laravel') }}</p>
+			<p>&copy; {{ @date("Y") }} {{ config('app.name', 'INews') }} Trang tin điện tử </p>
 		</footer>
 	</div>
 	<script src="{{ URL::asset('js/popper.min.js') }}" type="text/javascript"></script>

@@ -77,7 +77,7 @@
 		<?php echo $__env->yieldContent('content'); ?>
 		<hr />
 		<footer class="footer">
-			<p>&copy; <?php echo e(@date("Y")); ?> <?php echo e(config('app.name', 'Laravel')); ?></p>
+			<p>&copy; <?php echo e(@date("Y")); ?> <?php echo e(config('app.name', 'INews')); ?> Trang tin điện tử </p>
 		</footer>
 	</div>
 	<script src="<?php echo e(URL::asset('js/popper.min.js')); ?>" type="text/javascript"></script>

@@ -44,6 +44,7 @@ Route::get('/news/mynews', 'NewsController@getMyNews');
 Route::get('/news/mynews/delete', 'NewsController@getDeleteMyNew');
 Route::post('/news/add', 'NewsController@postAdd');
 Route::get('/news/delete', 'NewsController@getDeleteNew');
+Route::get('/news/update/{id}', 'NewsController@getUpdate');
 Route::post('/news/update', 'NewsController@postUpdate');
 Route::get('/news/{id}/approved/{status}', 'NewsController@getApproved');
 Route::get('/news/detail/{id}/{amount}/{user_id}', 'NewsController@getDetail');

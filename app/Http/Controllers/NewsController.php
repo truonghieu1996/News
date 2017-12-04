@@ -59,7 +59,13 @@ class NewsController extends Controller
 		]);
 		
 		return redirect('news/mynews')->with("success", "Đăng bài viết thành công!");
-    }
+	}
+	
+	 public function getUpdate($id){
+		$categories = DB::table('categories')->get();
+		$new = DB::table('news')->where('id', '=', $id)->first();
+		return view('news/update',['new' => $new, 'categories' => $categories]);
+	 }
 
     public function postUpdate(Request $request){
         $this->validate($request, [
@@ -71,7 +77,6 @@ class NewsController extends Controller
 
 		DB::table('news')->where('id', $request->ID_edit)->update([
 			'category_id' => $request->category_id_edit,
-			'user_id' => Auth::user()->id,
 			'title' => $request->title_edit,
 			'summary' => $request->summary_edit,
 			'content' => $request->content_edit,

@@ -10,10 +10,11 @@
 						ob_start();
 						ob_end_clean();
 						$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $strContent, $matches);
-						$first_img = $matches[1][0];
-						if (empty($first_img)) {
+						
+						if (!empty($output))
+							$first_img = $matches[1][0];
+						else
 							$first_img = "images/noimage.png";
-						}
 						return $first_img;
 					}
 				 ?> 
@@ -23,8 +24,8 @@
 							<div class="row">
 								<div class="col-md-2">
 									<div class="view overlay hm-white-slight z-depth-1-half">
-										<?php 
-									echo "<img class='d-flex mr-3 rounded img-thumbnail' src='". getFirstImage($value->content) ."' width='150' alt='' />";
+								<?php 
+									echo "<img class='d-flex mr-3 rounded img-thumbnail' src='". getFirstImage($value->content) ."' width='90' alt='' />";
 								?>
 										<a>
 											<div class="mask"></div>

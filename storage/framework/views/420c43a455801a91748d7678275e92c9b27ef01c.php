@@ -1,5 +1,4 @@
- 
-<?php $__env->startSection('content'); ?> 
+ <?php $__env->startSection('content'); ?>
 <div class="row">
 	<div class="col">
 		<div class="card">
@@ -25,49 +24,57 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php  $count = 1; 
+						<?php  
+						$count = 1;
 							function getFirstImage($strContent) {
 								$first_img = "";
 								ob_start();
 								ob_end_clean();
 								$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $strContent, $matches);
-								$first_img = $matches[1][0];
-								if (empty($first_img)) {
-									$first_img = "images/noimage.png";
-								}
+								if (!empty($output))
+									$first_img = $matches[1][0];
+								else
+									$first_img = "/images/noimage.png";
 								return $first_img;
 							}
 						 ?> 
-						<?php $__currentLoopData = $mynews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-						<tr>
-							<td><?php echo e($count++); ?></td>
-							<td>
-								<?php 
-									echo "<img class='d-flex mr-3 rounded img-thumbnail' src='". getFirstImage($value->content) ."' width='90' alt='' />";
-								?>
-							</td>
-							<td class="text-center"><?php echo e($value->name_category); ?></td>
-							<td><?php echo e($value->title); ?><br/><span class='small text-muted'>Có <?php echo e($value->amount_view); ?> lượt xem.</span></td>
-							<td><?php echo e($value->created_at); ?></td>
-							<td><?php echo e($value->updated_at); ?></td>
-							<td class="text-center">
-								<?php if($value->approved == 1): ?>
-									<span class="badge badge-success">Đã duyệt</span>
-								<?php else: ?>
-									<span class="badge badge-warning">Chưa duyệt</span>
-								<?php endif; ?>
-							</td>
-							<td class="text-center">
-									<a href="<?php echo e(url('/news/detail/' . $value->id .'/'.$value->amount_view.'/'.$value->user_id)); ?>" class="btn btn-warning btn-sm" style="width:40px;">Xem</a>
+							<?php $__currentLoopData = $mynews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<tr>
+								<td><?php echo e($count++); ?></td>
+								<td>
+									<?php 
+										echo "<img class='d-flex mr-3 rounded img-thumbnail' src='". getFirstImage($value->content) ."' width='90' alt='' />";
+									?>
 								</td>
-							<td class="text-center">
-								<a data-toggle="modal" data-target="#myModalEdit" onclick="getUpdate(<?php echo e($value->id); ?>, '<?php echo e($value->title); ?>', <?php echo e($value->category_id); ?>, '<?php echo e($value->summary); ?>'); return false;" class="btn btn-warning btn-sm" style="width:40px;">Sửa</a>
-							</td>
-							<td class="text-center">
-								<a data-toggle="modal" data-target="#myModalDelete" onclick="getDelete(<?php echo e($value->id); ?>); return false;" class="btn btn-danger btn-sm" style="width:40px;">Xóa</a>
-							</td>
-						</tr>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+								<td class="text-center"><?php echo e($value->name_category); ?></td>
+								<td><?php echo e($value->title); ?>
+
+									<br/>
+									<span class='small text-muted'>Có <?php echo e($value->amount_view); ?> lượt xem.</span>
+								</td>
+								<td><?php echo e($value->created_at); ?></td>
+								<td><?php echo e($value->updated_at); ?></td>
+								<td class="text-center">
+									<?php if($value->approved == 1): ?>
+									<span class="badge badge-success">Đã duyệt</span>
+									<?php else: ?>
+									<span class="badge badge-warning">Chưa duyệt</span>
+									<?php endif; ?>
+								</td>
+								<td class="text-center">
+									<a href="<?php echo e(url('/news/detail/' . $value->id .'/'.$value->amount_view.'/'.$value->user_id)); ?>" class="btn btn-warning btn-sm"
+									    style="width:40px;">Xem</a>
+								</td>
+								<td class="text-center">
+									<a href="<?php echo e(url('/news/update/' . $value->id)); ?>" class="btn btn-warning btn-sm"
+									    style="width:40px;">sửa</a>
+								</td>
+								<td class="text-center">
+									<a data-toggle="modal" data-target="#myModalDelete" onclick="getDelete(<?php echo e($value->id); ?>); return false;" class="btn btn-danger btn-sm"
+									    style="width:40px;">Xóa</a>
+								</td>
+							</tr>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 					</tbody>
 				</table>
 			</div>
@@ -173,114 +180,14 @@
 	</div>
 </form>
 
-<form action="<?php echo e(url('/news/update')); ?>" method="post">
-	<?php echo e(csrf_field()); ?>
-
-	<input type="hidden" id="ID_edit" name="ID_edit" value="" />
-	<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEdit" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="myModalLabelEdit">Cập nhật bài viết</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<div class="form-group">
-						<label for="title_edit">Tiêu đề
-							<span class="text-danger font-weight-bold">*</span>
-						</label>
-						<input type="text" class="form-control<?php echo e($errors->has('title_edit') ? ' is-invalid' : ''); ?>" id="title_edit" name="title_edit" value="<?php echo e(old('title_edit')); ?>"
-						    placeholder="" required /> <?php if($errors->has('title_edit')): ?>
-						<div class="invalid-feedback">
-							<strong><?php echo e($errors->first('title_edit')); ?></strong>
-						</div>
-						<?php endif; ?>
-					</div>
-					<div class="form-group">
-						<label for="category_id_edit">Chủ đề
-							<span class="text-danger font-weight-bold">*</span>
-						</label>
-						<select class="form-control<?php echo e($errors->has('category_id_edit') ? ' is-invalid' : ''); ?>" id="category_id_edit" name="category_id_edit" required>
-							<option value="">-- Chọn chủ đề --</option>
-							<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<option value="<?php echo e($value->id); ?>"><?php echo e($value->name_category); ?></option>
-							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-						</select>
-						<?php if($errors->has('category_id_edit')): ?>
-						<div class="invalid-feedback">
-							<strong><?php echo e($errors->first('category_id_edit')); ?></strong>
-						</div>
-						<?php endif; ?>
-					</div>
-					<div class="form-group">
-						<label for="summary_edit">Tóm tắt
-							<span class="text-danger font-weight-bold">*</span>
-						</label>
-						<textarea class="form-control<?php echo e($errors->has('summary_edit') ? ' is-invalid' : ''); ?>" id="summary_edit" name="summary_edit" placeholder=""
-						    required></textarea>
-						<?php if($errors->has('summary_edit')): ?>
-						<div class="invalid-feedback">
-							<strong><?php echo e($errors->first('summary_edit')); ?></strong>
-						</div>
-						<?php endif; ?>
-					</div>
-					<div class="form-group">
-						<label for="content_edit">Nội dung bài viết
-							<span class="text-danger font-weight-bold">*</span>
-						</label>
-						<textarea class="ckeditor form-control<?php echo e($errors->has('content_edit') ? ' is-invalid' : ''); ?>" id="content_edit" name="content_edit" placeholder=""
-						    required></textarea>
-						<?php if($errors->has('content_edit')): ?>
-						<div class="invalid-feedback">
-							<strong><?php echo e($errors->first('content_edit')); ?></strong>
-						</div>
-						<?php endif; ?>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Thực hiện</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
-
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('javascript'); ?>
-    <script type="text/javascript">
-        function getUpdate(id, title, category, summary) {
-            $('#ID_edit').val(id);
-            $('#title_edit').val(title);
-            $('#category_id_edit').val(category);
-            $('#summary_edit').val(summary);
-            //CKEDITOR.instances.content_edit.setData(data);
-        }
-
-        function getDelete(id) {
-            $('#ID_delete').val(id);
-        }
-    </script>
-	<?php if($errors->has('title')): ?>
-			$('#myModal').modal('show');
-	<?php endif; ?>
-	<?php if($errors->has('content')): ?>
-			$('#myModal').modal('show');
-	<?php endif; ?>
-	<?php if($errors->has('summary')): ?>
-			$('#myModal').modal('show');
-	<?php endif; ?>
-	<?php if($errors->has('title_edit')): ?>
-			$('#myModal').modal('show');
-	<?php endif; ?>
-	<?php if($errors->has('content_edit')): ?>
-			$('#myModal').modal('show');
-	<?php endif; ?>
-	<?php if($errors->has('summary_edit')): ?>
-			$('#myModal').modal('show');
-	<?php endif; ?>
-<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?> <?php $__env->startSection('javascript'); ?>
+<script type="text/javascript">
+	function getDelete(id) {
+		$('#ID_delete').val(id);
+	}
+</script>
+<?php if($errors->has('title')): ?> $('#myModal').modal('show'); <?php endif; ?> <?php if($errors->has('content')): ?> $('#myModal').modal('show');
+<?php endif; ?> <?php if($errors->has('summary')): ?> $('#myModal').modal('show'); <?php endif; ?> <?php if($errors->has('title_edit')): ?> $('#myModal').modal('show');
+<?php endif; ?> <?php if($errors->has('content_edit')): ?> $('#myModal').modal('show'); <?php endif; ?> <?php if($errors->has('summary_edit')): ?> $('#myModal').modal('show');
+<?php endif; ?> <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
