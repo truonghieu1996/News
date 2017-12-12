@@ -1,9 +1,9 @@
  
 <?php $__env->startSection('content'); ?> 
     <form action="<?php echo e(url('/news/update')); ?>" method="post">
-    <?php echo e(csrf_field()); ?>
+        <?php echo e(csrf_field()); ?>
 
-    <input type="hidden" id="ID_edit" name="ID_edit" value="<?php echo e($new->id); ?>" />
+        <input type="hidden" id="ID_edit" name="ID_edit" value="<?php echo e($new->id); ?>" />
         <div class="form-group">
             <div class="form-group">
                 <label for="title_edit">Tiêu đề
