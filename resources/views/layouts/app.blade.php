@@ -12,6 +12,7 @@
 	<link href="{{ URL::asset('css/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
 	<link href="{{ URL::asset('css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" /> @yield('css')
 	<link href="{{ URL::asset('css/custom.css') }}" type="text/css" rel="stylesheet" />
+	<link href="{{ URL::asset('images/icons/icon.png') }}" rel="shortcut icon">
 </head>
 
 <body>
